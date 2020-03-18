@@ -1,0 +1,8 @@
+flask
+flask-socketio
+eventlet
+gunicorn
+tensorflow==2.0.0b1
+keras
+python-dotenv
+paho-mqtt

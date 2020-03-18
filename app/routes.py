@@ -5,12 +5,14 @@ import time
 from flask import request, url_for, jsonify, abort, Response, render_template
 from flask_socketio import emit
 
+
 import numpy as np
 import paho.mqtt.subscribe as subscribe
 
 from app import app, socketio
 
 
+model = None
 thread = None
 
 classes = {
@@ -24,7 +26,7 @@ def predict(rssi):
     all_device = np.array([[d1,d2,d3]])
     predicted = app.config.model.predict_classes(all_device)[0][0]
 
-    return classes.get(predicted),
+    return classes.get(predicted)
 
 
 def extract(mqtt_msg):
