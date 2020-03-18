@@ -15,7 +15,7 @@
             // event handler for server sent data
             // the data is displayed in the "Received" section of the page
             socket.on('my connected', function(msg) {
-                $('#log').text(msg.data);
+                $('#log').html(msg.data);
             });
 
             socket.on('my response', function(msg) {

@@ -75,7 +75,7 @@ def index():
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
-    emit('my connected', {'data': 'Connected!!'})
+    emit('my connected', {'data': 'Connected!!<br>Waiting for STM32 Boards'})
 
 @socketio.on('disconnect', namespace='/test')
 def test_disconnect():
