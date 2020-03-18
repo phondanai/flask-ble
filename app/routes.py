@@ -41,12 +41,15 @@ def extract(mqtt_msg):
 def background_thread():
     """Example of how to send server generated events to clients."""
     count = 0
+
+    MQTT_BROKER_URL = app.config.get('MQTT_BROKER_URL')
+    MQTT_BROKER_PORT = int(app.config.get('MQTT_BROKER_PORT'))
     CLIENT_ID = app.config.get('MQTT_CLIENT_ID')
     NETPIE_TOKEN = app.config.get('MQTT_TOKEN')
     board = [-99,-99,-99]
     while True:
         count += 1
-        msg = subscribe.simple('@msg/taist2020/board/#', hostname='mqtt.netpie.io', port=1883, client_id=CLIENT_ID, auth={'username':NETPIE_TOKEN, 'password':None}, keepalive=600)
+        msg = subscribe.simple('@msg/taist2020/board/#', hostname=MQTT_BROKER_URL, port=MQTT_BROKER_PORT, client_id=CLIENT_ID, auth={'username':NETPIE_TOKEN, 'password':None}, keepalive=600)
         board_no, rssi = extract(msg)
         board[board_no-1] = rssi
 

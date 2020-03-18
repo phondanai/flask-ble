@@ -7,8 +7,8 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    MODEL_FILE = 'model.h5'
-    MQTT_BROKER_URL = 'mqtt.netpie.io'
-    MQTT_BROKER_PORT = 1883
-    MQTT_CLIENT_ID = '5769c42c-f897-47a0-9787-c59059a9429e'
-    MQTT_TOKEN = 'Qt46TTPzHu47krUc6FNZdLiXYLpqJgu5'
+    MODEL_FILE = os.environ.get('MODEL_FIE') or 'model.h5'
+    MQTT_BROKER_URL = os.environ.get('MQTT_BROKER_URL') or 'mqtt.netpie.io'
+    MQTT_BROKER_PORT = os.environ.get('MQTT_BROKER_PORT') or 1883
+    MQTT_CLIENT_ID = os.environ.get('MQTT_CLIENT_ID') or None
+    MQTT_TOKEN = os.environ.get('MQTT_TOKEN') or None
